@@ -7,7 +7,7 @@ function addUser() {
 
     const request = new XMLHttpRequest();
 
-    request.open("POST", url, true);
+    request.open("PUT", url, true);
 
     request.onload = function () {
         if (request.status == 200) {

@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
 });
 
 //Username
-app.post('/addUser/:userName', (req, res) => {
+app.put('/addUser/:userName', (req, res) => {
     const userName = req.params.userName;
     res.send(`Here's the username: ${userName}`);
     try {
-        fs.appendFile("users.txt", `${userName}\n`, (err) => {
+        fs.appendFile("users.json", JSON.stringify(userName), (err) => {
             if (err) throw err;
             console.log('Username logged.');
         });
@@ -26,6 +26,23 @@ app.post('/addUser/:userName', (req, res) => {
     }
 });
 
+// const resList = [
+//     {
+//         name: 'Smith',
+//         time: '0900',
+//         num: 4
+//     },
+//     {
+//         name: 'Jones',
+//         time: '1100',
+//         num: 3
+//     }
+// ];
+
+// fs.writeFile('reslist.json', JSON.stringify(resList), err => {
+//     if (err) throw err;
+//     console.log('Saved');
+// });
 
 
 
