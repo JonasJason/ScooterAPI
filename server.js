@@ -37,4 +37,11 @@ app.put('/addUser/:userName', (req, res) => {
 
 });
 
+app.get ('/ListRes', function (req, res) {
+    fs.readFile(__dirname + "/" + "reservation.json", 'utf8', function (err, data) {
+        console.log(data);
+        res.end(data);
+    });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
