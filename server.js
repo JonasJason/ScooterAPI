@@ -13,10 +13,14 @@ app.get('/', (req, res) => {
 
 //Username
 app.put('/addUser/:userName', (req, res) => {
-    const userName = req.params.userName;
+    //Trying to make user a json object
+    const user = {
+        userName: req.params.userName
+    };
+    //const userName = req.params.userName; (this works if you want to write without errors)
     res.send(`Here's the username: ${userName}`);
     try {
-        fs.appendFile("users.json", JSON.stringify(userName), (err) => {
+        fs.appendFile("users.json", userName, (err) => {
             if (err) throw err;
             console.log('Username logged.');
         });
