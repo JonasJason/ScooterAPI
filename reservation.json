@@ -1,0 +1,31 @@
+[ 
+    {
+    "user1": {
+        "username" : "taesan",
+        "start_date" : "4/15",
+        "start_time" : "3",
+        "number_of_hours" : "1"
+    },
+
+    "user2": {
+        "username" : "jonas",
+        "start_date" : "4/15",
+        "start_time" : "3",
+        "number_of_hours" : "1"
+    },
+
+    "user3": {
+        "username" : "kim",
+        "start_date" : "4/15",
+        "start_time" : "3",
+        "number_of_hours" : "1"
+    },
+
+    "user4": {
+        "username" : "jason",
+        "start_date" : "4/15",
+        "start_time" : "3",
+        "number_of_hours" : "1"
+    }
+}
+]
