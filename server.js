@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.send(`Hello from our GET request!`);
 });
 
-//Username
+//Add Username
 app.put('/addUser/:userName', (req, res) => {
     const userName = req.params.userName;
 
@@ -35,6 +35,27 @@ app.put('/addUser/:userName', (req, res) => {
         console.log("Done writing"); // Success
     });
 
+});
+
+//Find Reservation for Given Username
+app.get('/getReservation/:userName', (req, res) => {
+    const userName = req.params.userName;
+
+    //STEP 1: Read JSON file
+    const reservations = require("./reservation");
+
+    //match username to reservations
+});
+
+//Find ALL Reservations
+app.get('/getReservations', (req, res) => {
+
+    //STEP 1: Read JSON file
+    const reservations = require("./reservation");
+
+    //Return reservations
+    res.write(`The reservations are: ${reservations}`);
+    console.log("returning reservations");
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

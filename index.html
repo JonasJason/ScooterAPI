@@ -5,11 +5,27 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <input id="username" type="text" placeholder="Username"><button onclick="addUser();">Add Username</button>
+        Please Enter Your Username: <input id="username" type="text" placeholder="Username">
+        <br>
+        <br>
+        <button onclick="addUser();">Add Username to the System</button> or <button onclick="findReservation();">Find Your Reservation</button>
         <div id="outputArea">
             <ul id="log"></ul>
-            <p>Hello world</p>
         </div>
+
+        <br>
+        <hr>
+
+        <br>
+        <h3>Reservations: <button id="showAllReservations" onclick="allReservations();">Show ALL Reservations</button></h3>
+        <table id="dataTable" style="border: solid; background-color:rgb(252, 236, 235);" width="90%">
+            <tr style="background-color: rgb(252, 117, 135);">
+                <th>Username</th>
+                <th>Start Date</th>
+                <th>Start Time</th>
+                <th>Hours Renting</th>
+            </tr>
+        </table>
     </body>
     <script src="client.js" defer></script>
 </html>
