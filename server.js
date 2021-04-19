@@ -37,6 +37,7 @@ app.put('/addUser/:userName', (req, res) => {
 
 });
 
+<<<<<<< HEAD
 //Find Reservation for Given Username
 app.get('/getReservation/:userName', (req, res) => {
     const userName = req.params.userName;
@@ -56,6 +57,13 @@ app.get('/getReservations', (req, res) => {
     //Return reservations
     res.write(`The reservations are: ${reservations}`);
     console.log("returning reservations");
+=======
+app.get ('/ListRes', function (req, res) {
+    fs.readFile(__dirname + "/" + "reservation.json", 'utf8', function (err, data) {
+        console.log(data);
+        res.end(data);
+    });
+>>>>>>> 9ae0c1ce3b1587b287203c05262673859caac16e
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
