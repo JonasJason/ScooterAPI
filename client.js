@@ -116,7 +116,7 @@ function allReservations() {
 
             for (var i = 0; i < reservations.length; i++) {
                 raceArray.push(reservations[i].Circuit.Location.country);//What???
-                addRow(races[i].raceName, races[i].Circuit.circuitName, races[i].Circuit.Location.country);
+                addRow(reservation[i].username, reservation[i].startDate, reservation[i].startTime, reservation[i].hours);
             }
         }
         else {
