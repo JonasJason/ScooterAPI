@@ -33,40 +33,38 @@ function addUser() {
     request.send();
 }
 
-// //Adding a new reservation
-// function addReservation() {
-//     var reservation = document.getElementById("reservation").value;
+//Adding a new reservation
+function addReservation() {
+    var resUsername = document.getElementById("resUsername").value;
+    var resStartDate = document.getElementById("resStartDate").value;
+    var resStartTime = document.getElementById("resStartTime").value;
+    var resHours = document.getElementById("resHours").value;
 
-//     console.log(reservation);
-//     let url = "http://127.0.0.1:3000/addreservation/" + reservation;
+    console.log(resUsername);
+    console.log(resStartDate);
+    console.log(resStartTime);
+    console.log(resHours);
+    let url = "http://127.0.0.1:3000/addreservation/" + resUsername + "/" + resStartDate + "/" + resStartTime + "/" + resHours;
 
-//     const request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
 
-//     request.open("POST", url, true);
+    request.open("PUT", url, true);
 
-//     request.onload = function () {
-//         if (request.status == 200) {
-//             //Clear previous output area
-//             document.querySelector("outputArea").innerHTML = "<ul id='log'></ul>";
+    request.onload = function () {
+        if (request.status == 200) {
 
-//             //Change output to show that the username was logged
-//             let newElt = document.createElement('p');
+            let newElt = document.createElement('p');
 
-//             let textNode = document.createTextNode("New reservation created.");
+            newElt.appendChild(textNode);
 
-//             newElt.appendChild(textNode);
-
-//             document.querySelector("outputArea").appendChild(newElt);
-
-
-//             console.log("New reservation created");
-//         }
-//         else {
-//             console.log(`Error occured. Status: ${request.status}`);
-//         }
-//     };
-//     request.send();
-// }
+            console.log("New reservation created");
+        }
+        else {
+            console.log(`Error occured. Status: ${request.status}`);
+        }
+    };
+    request.send();
+}
 
 //Finding reservation for desired username
 function findReservation() {

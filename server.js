@@ -53,28 +53,35 @@ app.get('/getReservations', (req, res) => {
         //res.send("anything");
 
 //Add new reservation
-app.post('/addReservation', function (req, res) {
-    fs.readFile('reservation.json', function (err, data) {
-        // const username = req.params.username;
-        // const start_date = req.params.start_date;
-        // const start_time = req.params.start_time;
-        // const number_of_hours = req.params.number_of_hours;
+app.put('/addReservation/:username/:start_date/:start_time/:number_of_hours', function (req, res) {
+    const username = req.params.username;
+    const start_date = req.params.start_date;
+    const start_time = req.params.start_time;
+    const number_of_hours = req.params.number_of_hours;
 
-        // Defining new reservation
-        let reservation = {
-            "reservation5": {
-                "username" : "New",
-                "start_date" : "4/13",
-                "start_time" : "3",
-                "number_of_hours" : "2"
-            }
-        }
-        data = JSON.parse(data);
-        data["reservation5"] = reservation['reservation5'];
-        console.log(data);
-        res.end(JSON.stringify(data));
+    const reservations = require("./reservation");
+
+    // Defining new reservation
+    let reservation = { 
+        username : username,
+        start_date : start_date,
+        start_time : start_time,
+        number_of_hours : number_of_hours
+    }
+
+    reservations.push(reservation);
+        
+    console.log(reservation);
+
+    // STEP 3: Writing to a file
+    fs.writeFile("reservation.json", JSON.stringify(reservations), err => {
+     
+        // Checking for errors
+        if (err) throw err; 
+   
+        console.log("Done writing"); // Success
     });
-})
+});
 
 //Add Username
 app.put('/addUser/:userName', (req, res) => {
