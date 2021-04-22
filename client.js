@@ -94,10 +94,12 @@ function findReservation() {
             console.log(`Error occured. Status ${request.status}`);
         }
     }
+    request.send();
 }
 
 //Find ALL reservations
 function allReservations() {
+    let data;
 
     let url = "http://127.0.0.1:3000/getReservations";
 
@@ -107,22 +109,21 @@ function allReservations() {
 
     request.onload = function () {
         if (request.status == 200) {
-            console.log("we made it here");
             //Clear old table
             clearTable();
 
             //Populate table
-            var reservations = data.users;
+            data = JSON.parse(this.response);
 
-            for (var i = 0; i < reservations.length; i++) {
-                raceArray.push(reservations[i].Circuit.Location.country);//What???
-                addRow(reservation[i].username, reservation[i].startDate, reservation[i].startTime, reservation[i].hours);
+            for (var i = 0; i < data.length; i++) {
+                addRow(data[i].username, data[i].start_date, data[i].start_time, data[i].number_of_hours);
             }
         }
         else {
             console.log(`Error occured. Status ${request.status}`);
         }
     }
+    request.send();
 }
 
 //Add table rows
