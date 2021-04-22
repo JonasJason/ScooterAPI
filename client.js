@@ -33,6 +33,41 @@ function addUser() {
     request.send();
 }
 
+// //Adding a new reservation
+// function addReservation() {
+//     var reservation = document.getElementById("reservation").value;
+
+//     console.log(reservation);
+//     let url = "http://127.0.0.1:3000/addreservation/" + reservation;
+
+//     const request = new XMLHttpRequest();
+
+//     request.open("POST", url, true);
+
+//     request.onload = function () {
+//         if (request.status == 200) {
+//             //Clear previous output area
+//             document.querySelector("outputArea").innerHTML = "<ul id='log'></ul>";
+
+//             //Change output to show that the username was logged
+//             let newElt = document.createElement('p');
+
+//             let textNode = document.createTextNode("New reservation created.");
+
+//             newElt.appendChild(textNode);
+
+//             document.querySelector("outputArea").appendChild(newElt);
+
+
+//             console.log("New reservation created");
+//         }
+//         else {
+//             console.log(`Error occured. Status: ${request.status}`);
+//         }
+//     };
+//     request.send();
+// }
+
 //Finding reservation for desired username
 function findReservation() {
     var userName = document.getElementById("username").value;
