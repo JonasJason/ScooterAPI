@@ -1,27 +1,27 @@
 [ 
     {
-    "user1": {
+    "reservation1": {
         "username" : "taesan",
         "start_date" : "4/15",
         "start_time" : "3",
         "number_of_hours" : "1"
     },
 
-    "user2": {
+    "reservation2": {
         "username" : "jonas",
         "start_date" : "4/15",
         "start_time" : "3",
         "number_of_hours" : "1"
     },
 
-    "user3": {
+    "reservation3": {
         "username" : "kim",
         "start_date" : "4/15",
         "start_time" : "3",
         "number_of_hours" : "1"
     },
 
-    "user4": {
+    "reservation4": {
         "username" : "jason",
         "start_date" : "4/15",
         "start_time" : "3",
