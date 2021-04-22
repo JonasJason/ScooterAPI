@@ -51,6 +51,30 @@ app.get('/getReservations', (req, res) => {
         res.sendStatus(200);
     });
 
+//Add new reservation
+app.post('/addReservation', function (req, res) {
+    fs.readFile('reservation.json', function (err, data) {
+        // const username = req.params.username;
+        // const start_date = req.params.start_date;
+        // const start_time = req.params.start_time;
+        // const number_of_hours = req.params.number_of_hours;
+
+        // Defining new reservation
+        let reservation = {
+            "reservation5": {
+                "username" : "New",
+                "start_date" : "4/13",
+                "start_time" : "3",
+                "number_of_hours" : "2"
+            }
+        }
+        data = JSON.parse(data);
+        data["reservation5"] = reservation['reservation5'];
+        console.log(data);
+        res.end(JSON.stringify(data));
+    });
+})
+
 //Add Username
 app.put('/addUser/:userName', (req, res) => {
     const userName = req.params.userName;
