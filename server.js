@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 //Find ALL Reservations
+//Find ALL Reservations
 app.get('/getReservations', (req, res) => {
     console.log("why does this not show up?????");
         //STEP 1: Read JSON file
@@ -39,17 +40,17 @@ app.get('/getReservations', (req, res) => {
                 }
                 return 0;
             });
-        
-            resData.forEach(res => {
-                console.log(res);
+
+            resData.forEach(reservation => {
+                res.send(reservation);
+                console.log(reservation);
             });
         })
-    
+    })
         //Return reservations
-        res.write(`The reservations are: ${reservations}`);
-        console.log("returning reservations");
-        res.sendStatus(200);
-    });
+        //res.write(`The reservations are: ${reservations}`);
+        //console.log("returning reservations");
+        //res.send("anything");
 
 //Add new reservation
 app.post('/addReservation', function (req, res) {
