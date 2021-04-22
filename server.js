@@ -12,7 +12,6 @@ app.get('/', (req, res) => {
 });
 
 //Find ALL Reservations
-//Find ALL Reservations
 app.get('/getReservations', (req, res) => {
     console.log("why does this not show up?????");
         //STEP 1: Read JSON file
