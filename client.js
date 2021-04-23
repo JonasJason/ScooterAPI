@@ -40,10 +40,6 @@ function addReservation() {
     var resStartTime = document.getElementById("resStartTime").value;
     var resHours = document.getElementById("resHours").value;
 
-    console.log(resUsername);
-    console.log(resStartDate);
-    console.log(resStartTime);
-    console.log(resHours);
     let url = "http://127.0.0.1:3000/addreservation/" + resUsername + "/" + resStartDate + "/" + resStartTime + "/" + resHours;
 
     const request = new XMLHttpRequest();
@@ -100,6 +96,41 @@ function findReservation() {
         }
     }
     request.send();
+}
+
+//Update Reservation
+function updateReservation() {
+    var newUsername = document.getElementById("updateUsername").value;
+    var newStartDate = document.getElementById("newStartDate").value;
+    var newStartTime = document.getElementById("newStartTime").value;
+    var newHours = document.getElementById("newHours").value;
+
+    let url = "http://127.0.0.1:3000/updateReservation/" + newUsername + "/" + newStartDate + "/" + newStartTime + "/" + newHours;
+
+    const request = new XMLHttpRequest();
+
+    request.open("PUT", url, true);
+
+    request.onload = function () {
+        if (request.status == 200) {
+
+            let newElt = document.createElement('p');
+
+            newElt.appendChild(textNode);
+
+            console.log("Reservation updated.");
+            window.alert("Reservation updated");
+        }
+        else {
+            console.log(`Error occured. Status: ${request.status}`);
+        }
+    };
+    request.send();
+}
+
+//Delete Reservation
+function deleteReservation() {
+
 }
 
 //Find ALL reservations

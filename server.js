@@ -70,6 +70,64 @@ app.put('/addReservation/:username/:start_date/:start_time/:number_of_hours', (r
     });
 });
 
+//Update reservation
+app.put('/updateReservation/:username/:start_date/:start_time/:number_of_hours', (req, res) => {
+    const username = req.params.username;
+    const start_date = req.params.start_date;
+    const start_time = req.params.start_time;
+    const number_of_hours = req.params.number_of_hours;
+
+    const reservations = require("./reservation");
+
+    // Defining new reservation
+    let reservation = {
+        username: username,
+        start_date: start_date,
+        start_time: start_time,
+        number_of_hours: number_of_hours
+    }
+
+    //FIND RESERVATION THAT MATCHES
+    fs.readFile('reservation.json', (err, data) => {
+        if (err) throw err;
+
+        let resData = JSON.parse(data);
+        let desiredReservation;
+
+        resData.forEach(res => {
+            if (res.username === userName) {
+                desiredReservation = res;
+            }
+        });
+        //replace it (i think i have to use splice)
+        desiredReservation = reservation;
+        // desiredReservation.username = username;
+        // desiredReservation.start_date = start_date;
+        // desiredReservation.start_time = start_time;
+        // desiredReservation.number_of_hours = number_of_hours;
+
+        console.log(`Updated reservation: ${desiredReservation}`);
+        res.send(desiredReservation);
+    });
+
+
+    //REPLACE IT
+
+
+    reservations.push(reservation);
+
+    console.log(reservation);
+
+    // STEP 3: Writing to a file
+    fs.writeFile("reservation.json", JSON.stringify(reservations), err => {
+
+        // Checking for errors
+        if (err) throw err;
+
+        console.log("Done writing"); // Success
+    });
+});
+
 //Add Username
 app.put('/addUser/:userName', (req, res) => {
     const userName = req.params.userName;

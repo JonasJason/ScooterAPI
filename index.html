@@ -6,33 +6,33 @@
     </head>
     <body>
         <h3>Add a New Username to the System</h3>
-        Please Enter Your Username: <input id="username" type="text" placeholder="Username">
-        <br>
-        <br>
-        <button onclick="addUser();">Add Username to the System</button>
+        Please Enter Your Username: <input id="username" type="text" placeholder="Username"> <button onclick="addUser();">Add Username to the System</button>
         <div id="outputArea">
             <ul id="log"></ul>
         </div>
 
-        <br>
         <hr>
-
         <h3>Create a New Reservation:</h3>
-        <input id="resUsername" type="text" placeholder="Username"><input id="resStartDate" type="text" placeholder="Start Date (ex: 04-18-2021)"><input id="resStartTime" type="text" placeholder="Start time (ex: 1300)"><input id="resHours" type="text" placeholder="Hours (ex: 2)">
+        <input id="resUsername" type="text" placeholder="Username"> <input id="resStartDate" type="text" placeholder="Date (ex: 04-18-2021)"> <input id="resStartTime" type="text" placeholder="Start time (ex: 1300)"> <input id="resHours" type="text" placeholder="Hours (ex: 2)"> <button onclick="addReservation();">Add Reservation to the System</button>
         <br>
         <br>
-        <button onclick="addReservation();">Add Reservation to the System</button>
 
-        <br>
-        <br>
         <hr>
+        <h3>Update Your Reservation: <input id="updateUsername" type="text" placeholder="Username"></h3>
+        New Reservation: <input id="newStartDate" type="text" placeholder="Date (ex: 04-18-2021)"> <input id="newStartTime" type="text" placeholder="Start time (ex: 1300)"> <input id="newHours" type="text" placeholder="Hours (ex: 2)">
+        <button onclick="updateReservation();">Update</button>
+        <br>
+        <br>
 
-        <br>
+        <hr>
+        <h3>Delete Your Reservation: <input id="deleteUsername" type="text" placeholder="Username"> <button onclick="addReservation();">Delete</button></h3>
+        
+        <hr>
         <h3>Reservations: <button onclick="allReservations();">Show ALL Reservations</button></h3>
-            or Enter your username: <input id="findUsername" type="text" placeholder="Username"> and <button onclick="findReservation();">Find Your Reservation</button>
+            or Enter Your Username: <input id="findUsername" type="text" placeholder="Username"> and <button onclick="findReservation();">Find Your Reservation</button>
         <br>
         <br>
-            <table id="dataTable" style="border: solid; background-color:rgb(252, 236, 235);" width="90%">
+            <table id="dataTable" style="border: solid; background-color:rgb(252, 236, 235);" width="80%">
             <tr style="background-color: rgb(252, 117, 135);">
                 <th>Username</th>
                 <th>Start Date</th>
