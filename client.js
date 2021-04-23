@@ -130,7 +130,38 @@ function updateReservation() {
 
 //Delete Reservation
 function deleteReservation() {
+    var userName = document.getElementById("deleteUsername").value;
 
+    console.log(`Deleting reservation for: ${userName}`);
+    let url = "http://127.0.0.1:3000/deleteReservation/" + userName;
+
+    const request = new XMLHttpRequest();
+
+    request.open("GET", url, true);
+
+    request.onload = function () {
+        if (request.status == 200) {
+            //Clear old table
+            clearTable();
+
+            //Populate table
+            try {
+                data = JSON.parse(this.response);
+
+                if (data) {
+                    addRow(data.username, data.start_date, data.start_time, data.number_of_hours);
+                }
+            }
+            catch {
+                window.alert("No reservation found");
+            }
+            
+        }
+        else {
+            console.log(`Error occured. Status ${request.status}`);
+        }
+    }
+    request.send();
 }
 
 //Find ALL reservations
