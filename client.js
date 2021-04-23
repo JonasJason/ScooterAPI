@@ -68,10 +68,10 @@ function addReservation() {
 
 //Finding reservation for desired username
 function findReservation() {
-    var userName = document.getElementById("username").value;
+    var userName = document.getElementById("findUsername").value;
 
     console.log(`Finding reservations for: ${userName}`);
-    let url = "http://127.0.0.1:3000/findReservation" + userName;
+    let url = "http://127.0.0.1:3000/findReservation/" + userName;
 
     const request = new XMLHttpRequest();
 
@@ -83,12 +83,17 @@ function findReservation() {
             clearTable();
 
             //Populate table
-            var reservations = data.users;
+            try {
+                data = JSON.parse(this.response);
 
-            for (var i = 0; i < reservations.length; i++) {
-                raceArray.push(reservations[i].Circuit.Location.country);//What???
-                addRow(races[i].raceName, races[i].Circuit.circuitName, races[i].Circuit.Location.country);
+                if (data) {
+                    addRow(data.username, data.start_date, data.start_time, data.number_of_hours);
+                }
             }
+            catch {
+                window.alert("No reservation found");
+            }
+            
         }
         else {
             console.log(`Error occured. Status ${request.status}`);
@@ -153,8 +158,4 @@ function clearTable() {
     for (var x = rowCount - 1; x > 0; x--) {
         myTable.deleteRow(x);
     }
-
-    //Also clear raceArray and CountryDeaths
-    //raceArray = [];
-    //countryDeaths = [];
 }

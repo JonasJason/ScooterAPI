@@ -1,1 +1,26 @@
-[{"username":"taesan","start_date":"4/15","start_time":"3","number_of_hours":"1"},{"username":"jonas","start_date":"4/15","start_time":"3","number_of_hours":"1"},{"username":"kim","start_date":"4/15","start_time":"3","number_of_hours":"1"},{"username":"jason","start_date":"4/15","start_time":"3","number_of_hours":"1"},{"username":"test","start_date":"test","start_time":"test","number_of_hours":"test"},{"username":"jonasj","start_date":"01-20-2028","start_time":"1205","number_of_hours":"3"}]
+[
+    {
+        "username": "taesan",
+        "start_date": "04-16-2021",
+        "start_time": "1430",
+        "number_of_hours": "1"
+    },
+    {
+        "username": "jonas",
+        "start_date": "04-15-2021",
+        "start_time": "0930",
+        "number_of_hours": "1"
+    },
+    {
+        "username": "kim",
+        "start_date": "04-17-2021",
+        "start_time": "1000",
+        "number_of_hours": "1"
+    },
+    {
+        "username": "jason",
+        "start_date": "04-15-2021",
+        "start_time": "1300",
+        "number_of_hours": "1"
+    }
+]
