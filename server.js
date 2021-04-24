@@ -6,6 +6,7 @@ const cors = require('cors');
 app.use(cors());
 
 const fs = require('fs');
+// const { readFile } = require('node:fs');
 
 //Find ALL Reservations
 app.get('/getReservations', (req, res) => {
@@ -174,6 +175,27 @@ app.get('/findReservation/:userName', (req, res) => {
         res.send(desiredReservation);
     });
 });
+
+app.delete('/deleteReservation/:username/:start_date/:start_time/:number_of_hours', function (req, res) {
+    const userName = req.params.userName;
+
+    // First read existing users.
+    fs.readFile("reservation.json", function (err, data) {
+        if (err) throw err;
+        
+        let resData = JSON.parse(data);
+        let deleteReservation;
+
+        resData.forEach(res => {
+            if (res.username === userName) {
+                deleteReservation = res;
+            }
+        }) 
+        delete data[deleteReservation + 3];    
+        console.log(data);
+        res.end(deleteReservation);
+    });
+})
 
 
 
