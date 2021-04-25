@@ -195,7 +195,7 @@ app.delete('/deleteReservation/:username', function (req, res) {
                 console.log(`No reservation found for ${userName}`);
                 res.send(`No reservation found for ${userName}`);
             }
-        }
+        });
     });
 });
 
