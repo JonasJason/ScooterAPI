@@ -137,20 +137,17 @@ function deleteReservation() {
 
     const request = new XMLHttpRequest();
 
-    request.open("GET", url, true);
+    request.open("DELETE", url, true);
 
     request.onload = function () {
         if (request.status == 200) {
             //Clear old table
             clearTable();
 
-            //Populate table
+            //Make sure there is a reservation in that name
             try {
                 data = JSON.parse(this.response);
 
-                if (data) {
-                    addRow(data.username, data.start_date, data.start_time, data.number_of_hours);
-                }
             }
             catch {
                 window.alert("No reservation found");

@@ -78,15 +78,15 @@ app.put('/updateReservation/:username/:start_date/:start_time/:number_of_hours',
     const start_time = req.params.start_time;
     const number_of_hours = req.params.number_of_hours;
 
-    const reservations = require("./reservation");
-
     // Defining new reservation
-    let reservation = {
+    let newReservation = {
         username: username,
         start_date: start_date,
         start_time: start_time,
         number_of_hours: number_of_hours
     }
+
+    const reservations = require("./reservation");
 
     //FIND RESERVATION THAT MATCHES
     fs.readFile('reservation.json', (err, data) => {
@@ -101,22 +101,14 @@ app.put('/updateReservation/:username/:start_date/:start_time/:number_of_hours',
             }
         });
         //replace it (i think i have to use splice)
-        desiredReservation = reservation;
-        // desiredReservation.username = username;
-        // desiredReservation.start_date = start_date;
-        // desiredReservation.start_time = start_time;
-        // desiredReservation.number_of_hours = number_of_hours;
+        desiredReservation = newReservation;
 
         console.log(`Updated reservation: ${desiredReservation}`);
         res.send(desiredReservation);
     });
 
-
     //REPLACE IT
-
-
     reservations.push(reservation);
-
     console.log(reservation);
 
     // STEP 3: Writing to a file
@@ -176,8 +168,9 @@ app.get('/findReservation/:userName', (req, res) => {
     });
 });
 
-app.delete('/deleteReservation/:username/:start_date/:start_time/:number_of_hours', function (req, res) {
-    const userName = req.params.userName;
+//Delete reservation
+app.delete('/deleteReservation/:username', function (req, res) {
+    const userName = req.params.username;
 
     // First read existing users.
     fs.readFile("reservation.json", function (err, data) {
@@ -186,17 +179,24 @@ app.delete('/deleteReservation/:username/:start_date/:start_time/:number_of_hour
         let resData = JSON.parse(data);
         let deleteReservation;
 
-        resData.forEach(res => {
-            if (res.username === userName) {
-                deleteReservation = res;
+        resData.forEach(res, currentIndex => {
+            if (res.username == userName) {
+                deleteReservation = currentIndex;
+                resData.splice(deleteReservation, 1);
+
+                fs.writeFile("reservation.json", JSON.stringify(resData), err => {
+                    if (err) throw err;
+                    //then console log the request
+                    console.log(`Deleting reservation for user ${userName}`);
+                    res.send(`Deleted reservation for ${userName}`);
+                });
             }
-        }) 
-        delete data[deleteReservation + 3];    
-        console.log(data);
-        res.end(deleteReservation);
+            else {
+                console.log(`No reservation found for ${userName}`);
+                res.send(`No reservation found for ${userName}`);
+            }
+        }
     });
-})
-
-
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
