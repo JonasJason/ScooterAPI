@@ -6,7 +6,6 @@ const cors = require('cors');
 app.use(cors());
 
 const fs = require('fs');
-// const { readFile } = require('node:fs');
 
 //Find ALL Reservations
 app.get('/getReservations', (req, res) => {
@@ -179,8 +178,8 @@ app.delete('/deleteReservation/:username', function (req, res) {
         let resData = JSON.parse(data);
         let deleteReservation;
 
-        resData.forEach(res, currentIndex => {
-            if (res.username == userName) {
+        resData.forEach(reservation, currentIndex => {
+            if (reservation.username == userName) {
                 deleteReservation = currentIndex;
                 resData.splice(deleteReservation, 1);
 
@@ -188,12 +187,12 @@ app.delete('/deleteReservation/:username', function (req, res) {
                     if (err) throw err;
                     //then console log the request
                     console.log(`Deleting reservation for user ${userName}`);
-                    res.send(`Deleted reservation for ${userName}`);
+                    res.send(userName);
                 });
             }
             else {
                 console.log(`No reservation found for ${userName}`);
-                res.send(`No reservation found for ${userName}`);
+                res.send(userName);
             }
         });
     });

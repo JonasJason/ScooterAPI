@@ -1,0 +1,17 @@
+//Get a list of reservations
+GET /getReservations
+
+//Add a new reservation
+PUT /addReservation/:username/:start_date/:start_time/:number_of_hours
+
+//Update an existing reservation
+PUT /updateReservation/:username/:start_date/:start_time/:number_of_hours
+
+//Add a new user to the system
+PUT /addUser/:userName
+
+//Find a reservation for a particular user
+GET /findReservation/:userName
+
+//Delete a reservation for a particular user
+DELETE /deleteReservation/:username
